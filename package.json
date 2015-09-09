@@ -1,0 +1,28 @@
+{
+  "name": "happner-cloud",
+  "version": "0.0.1",
+  "description": "cloud services for happner",
+  "main": "lib/cloud-service.js",
+  "scripts": {
+    "test": "LOG_LEVEL=off mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/happner/happner-cloud"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/happner/happner-cloud/issues"
+  },
+  "homepage": "https://github.com/happner/happner-cloud",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4",
+    "request": "^2.53.0",
+    "when": "^3.7.3"
+  },
+  "dependencies": {
+    "happner": "^0.0.25"
+  }
+}
