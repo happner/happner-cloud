@@ -5,11 +5,18 @@ module.exports = {
     persist:true
   },
   modules: {
-    'happner-security': {
+    'happner-security-user': {
+      create:{
+        name:"user"
+      },
       path: __dirname + '/node_modules/happner-security/index.js'
-    }
-  },
-   modules: {
+    },
+    'happner-security-group': {
+      create:{
+        name:"group"
+      },
+      path: __dirname + '/node_modules/happner-security/index.js'
+    },
     'happner-user-management': {
       path: __dirname + '/node_modules/happner-user-management/index.js'
     }
@@ -27,15 +34,16 @@ module.exports = {
         }
       }
     },
-    'happner-security': {
+    'happnerSecurityUser': {
+      moduleName:"happner-security-user",
       schema:{
         "exclusive":false
-      },
-      web:{
-        routes:{
-          /*"client":"handleRequest",*/
-          "lib":"static"
-        }
+      }
+    },
+    'happnerSecurityGroup': {
+      moduleName:"happner-security-group",
+      schema:{
+        "exclusive":false
       }
     }
   }
