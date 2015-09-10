@@ -11,6 +11,12 @@ module.exports = {
       },
       path: __dirname + '/node_modules/happner-security/index.js'
     },
+    'happner-security-network': {
+      create:{
+        name:"network"
+      },
+      path: __dirname + '/node_modules/happner-security/index.js'
+    },
     'happner-security-group': {
       create:{
         name:"group"
@@ -32,6 +38,12 @@ module.exports = {
          "global":[],
          "static":"static"
         }
+      }
+    },
+    'happnerSecurityNetwork': {
+      moduleName:"happner-security-network",
+      schema:{
+        "exclusive":false
       }
     },
     'happnerSecurityUser': {
