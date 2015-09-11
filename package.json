@@ -23,6 +23,6 @@
     "when": "^3.7.3"
   },
   "dependencies": {
-    "happner": "^0.0.25"
+    "happner": "^0.0.27"
   }
 }
