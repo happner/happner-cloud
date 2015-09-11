@@ -7,19 +7,19 @@ module.exports = {
   modules: {
     'happner-security-user': {
       construct:{
-        name:"user"
+        name:"UserManager"
       },
       path: __dirname + '/node_modules/happner-security/index.js'
     },
     'happner-security-network': {
       construct:{
-        name:"network"
+        name:"NetworkManager"
       },
       path: __dirname + '/node_modules/happner-security/index.js'
     },
     'happner-security-group': {
       construct:{
-        name:"group"
+        name:"GroupManager"
       },
       path: __dirname + '/node_modules/happner-security/index.js'
     },
