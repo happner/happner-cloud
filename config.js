@@ -6,19 +6,19 @@ module.exports = {
   },
   modules: {
     'happner-security-user': {
-      create:{
+      construct:{
         name:"user"
       },
       path: __dirname + '/node_modules/happner-security/index.js'
     },
     'happner-security-network': {
-      create:{
+      construct:{
         name:"network"
       },
       path: __dirname + '/node_modules/happner-security/index.js'
     },
     'happner-security-group': {
-      create:{
+      construct:{
         name:"group"
       },
       path: __dirname + '/node_modules/happner-security/index.js'
@@ -41,21 +41,51 @@ module.exports = {
       }
     },
     'happnerSecurityNetwork': {
+      accessLevel:"mesh",
+      startMethod: "start",
       moduleName:"happner-security-network",
       schema:{
-        "exclusive":false
+        "exclusive":false,//means we dont dynamically share anything else
+        "methods":{
+          "start":{
+            type:"async",
+            parameters:[
+             {"required":true, "value":{/*TODO - configuration goes here*/}}  
+            ]
+          }
+        }
       }
     },
     'happnerSecurityUser': {
+      accessLevel:"mesh",
+      startMethod: "start",
       moduleName:"happner-security-user",
       schema:{
-        "exclusive":false
+        "exclusive":false,//means we dont dynamically share anything else
+        "methods":{
+          "start":{
+            type:"async",
+            parameters:[
+             {"required":true, "value":{/*TODO - configuration goes here*/}}  
+            ]
+          }
+        }
       }
     },
     'happnerSecurityGroup': {
+      accessLevel:"mesh",
+      startMethod: "start",
       moduleName:"happner-security-group",
       schema:{
-        "exclusive":false
+        "exclusive":false,//means we dont dynamically share anything else
+        "methods":{
+          "start":{
+            type:"async",
+            parameters:[
+             {"required":true, "value":{/*TODO - configuration goes here*/}}  
+            ]
+          }
+        }
       }
     }
   }
