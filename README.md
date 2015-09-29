@@ -16,7 +16,7 @@ the mesh is instantiated by: https://github.com/happner/happner-cloud/blob/maste
 
 with the following config: https://github.com/happner/happner-cloud/blob/master/config.js
 
-you can now navigate to http://localhost:55000/
+you can now navigate to http://localhost:55000/happner-user-management
 
 just log in - the credentials are defaulted
 
@@ -39,4 +39,5 @@ to see in full what these managers can do - have a look at their action componen
 See `config.js` for loaded components.
 
 See `node_modules/happner-security` and `node_modules/happner-user-management` for their definitions.
+
 

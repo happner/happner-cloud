@@ -1,6 +1,6 @@
 {
   "name": "happner-cloud",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "cloud services for happner",
   "main": "lib/cloud-service.js",
   "scripts": {
