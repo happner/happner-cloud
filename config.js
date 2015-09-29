@@ -28,15 +28,15 @@ module.exports = {
     }
   },
   components:{
-    'www': {
+    'happner-user-management': {
       moduleName:"happner-user-management",
+      startMethod:"initialize",
       schema:{
         "exclusive":false
       },
       web:{
         routes:{
-         "global":[],
-         "static":"static"
+         "static":"app"
         }
       }
     },
