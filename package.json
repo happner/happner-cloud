@@ -18,13 +18,13 @@
   "homepage": "https://github.com/happner/happner-cloud",
   "devDependencies": {
     "chai": "^2.2.0",
-    "mocha": "^2.2.4",
+    "mocha": "^2.3.3",
     "request": "^2.53.0",
     "when": "^3.7.3"
   },
   "dependencies": {
     "happner": "^0.0.32",
-    "happner-dashboard":"^0.0.11",
-    "happner-resources":"^0.0.8"
+    "happner-dashboard": "^0.0.11",
+    "happner-resources": "^0.0.8"
   }
 }
