@@ -1,64 +1,108 @@
+process.env.LOG_LEVEL = process.env.LOG_LEVEL || 'off';
+
+var username = require('sillyname')().split(' ').join('@').toLowerCase() + '.net';
+var password = 'xxx';
+
+var happner = require('happner');
+
+// https://github.com/happner/happner/blob/feature/login/docs/client.md
+
+var MeshClient = happner.MeshClient;
+var adminClient = new MeshClient(/* {hostname: port:} */);
+var userClient = new MeshClient();
+
+
 describe('Add User', function() {
 
-  before(function(done) {
 
+  before('start a mesh node', function(done) {
     var _this = this;
-
-    require('happner').create(require('../config'))
-
+    happner.create(require('../config'))
     .then(function(mesh) {
-
       _this.mesh = mesh;
       done();
-
     }).catch(done);
-
   });
-
 
   after(function(done) {
-
     this.mesh.stop(done);
-
   });
+
 
 
   context('connect and login as admin', function() {
 
+
     before(function(done) {
 
-      var MeshClient = require('happner').MeshClient;
+      // same as browser
 
-      // below is same as browser
-
-      var admin = new MeshClient(/* {hostname: port:} */)
-
-      admin.login({
+      adminClient.login({
         username: '_ADMIN',
         password: 'happn',
       });
 
-      admin.on('login/allow', function() {
-        console.log('login ok');
+      adminClient.on('login/allow', function() {
         done();
       });
 
-      admin.on('login/deny', function() {
+      adminClient.on('login/deny', function() {
         done(new Error('Access Denied'));
       });
 
-      admin.on('login/error', function(e) {
+      adminClient.on('login/error', function(e) {
         done(e);
       })
-
-
     });
 
-    it('can login with client', function(done) {
 
-      done();
+    context('create a user called: \'' + username + '\'', function() {
 
-    });
+
+      before(function(done) {
+
+        var security = adminClient.exchange.security;
+
+        security.upsertUser({
+
+          username: username,
+          password: password,
+          custom_data: {
+            something: 'usefull'
+          }
+
+        }, {overwrite: false}, function(e, user) {
+          if (e) return done(e);
+          done();
+        });
+
+      });
+
+
+      it('can login as \''+username+'\'', function(done) {
+
+        // another way to login (using the promise)
+
+        userClient.login({username: username, password: password})
+
+        .then(function() {
+
+          // login success
+
+          done();
+
+        })
+
+        .catch(function(e) {
+          // AccessDenied or Error
+          done(e);
+        });
+
+      });
+
+
+    })
+
 
   });
 
