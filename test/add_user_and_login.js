@@ -8,7 +8,7 @@ var happner = require('happner');
 // https://github.com/happner/happner/blob/feature/login/docs/client.md
 
 var MeshClient = happner.MeshClient;
-var adminClient = new MeshClient(/* {hostname: port:} */);
+var adminClient = new MeshClient(/* {hostname:'localhost' port:55000} */);
 var userClient = new MeshClient();
 
 
@@ -63,17 +63,19 @@ describe('Add User', function() {
 
         var security = adminClient.exchange.security;
 
-        security.upsertUser({
-
+        var newUser = {
           username: username,
           password: password,
           custom_data: {
             something: 'usefull'
           }
+        }
 
-        }, {overwrite: false}, function(e, user) {
+        security.addUser(newUser, function(e, user) {
+
           if (e) return done(e);
           done();
+
         });
 
       });
@@ -81,11 +83,11 @@ describe('Add User', function() {
 
       it('can login as \''+username+'\'', function(done) {
 
+        var credentials = {username: username, password: password};
+
         // another way to login (using the promise)
 
-        userClient.login({username: username, password: password})
-
-        .then(function() {
+        userClient.login(credentials).then(function() {
 
           // login success
 
@@ -94,15 +96,14 @@ describe('Add User', function() {
         })
 
         .catch(function(e) {
+
           // AccessDenied or Error
           done(e);
         });
 
       });
 
-
-    })
-
+    });
 
   });
 
