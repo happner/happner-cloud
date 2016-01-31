@@ -1,10 +1,13 @@
 module.exports = {
   name: 'happner-cloud',
   datalayer: {
+    secure:true,
     log_level: 'info|error|warning',
-    persist:true
+    persist:true,
+    middleware:{security:{exclusions:['/happner-dashboard/*','/happner-resources/*']}}
   },
   modules: {
+    /*
     'happner-security-user': {
       construct:{
         name:"UserManager"
@@ -26,8 +29,10 @@ module.exports = {
     'happner-user-management': {
       path: __dirname + '/node_modules/happner-user-management/index.js'
     }
+    */
   },
   components:{
+    /*
     'happner-user-management': {
       moduleName:"happner-user-management",
       startMethod:"initialize",
@@ -50,7 +55,7 @@ module.exports = {
           "start":{
             type:"async",
             parameters:[
-             {"required":true, "value":{/*TODO - configuration goes here*/}}  
+             {"required":true, "value":{}}
             ]
           }
         }
@@ -66,7 +71,7 @@ module.exports = {
           "start":{
             type:"async",
             parameters:[
-             {"required":true, "value":{/*TODO - configuration goes here*/}}  
+             {"required":true, "value":{}}
             ]
           }
         }
@@ -82,11 +87,11 @@ module.exports = {
           "start":{
             type:"async",
             parameters:[
-             {"required":true, "value":{/*TODO - configuration goes here*/}}  
+             {"required":true, "value":{}}
             ]
           }
         }
       }
-    }
+    }*/
   }
 }

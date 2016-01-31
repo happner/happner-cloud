@@ -23,8 +23,8 @@
     "when": "^3.7.3"
   },
   "dependencies": {
-    "happner": "^0.0.32",
-    "happner-dashboard":"^0.0.11",
-    "happner-resources":"^0.0.8"
+    "happner": "^1.5.5",
+    "happner-dashboard":"^0.0.12",
+    "happner-resources":"^0.0.11"
   }
 }
